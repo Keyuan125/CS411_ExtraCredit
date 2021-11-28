@@ -84,6 +84,17 @@ double join(vector<vector<string>> firstFile, vector<vector<string>> secondFile,
 	}
 	auto end = chrono::steady_clock::now();
 	duration<double, milli> ms_double = end - start;
+	if (output != "") {
+		ofstream myfile;
+		myfile.open(output);
+		for (auto row : result) {
+			for (auto pro: row) {
+				myfile << pro << "|";
+			}
+			myfile << "\n";
+		}
+		myfile.close();
+	}
 
 	return ms_double.count();
 }
@@ -157,25 +168,25 @@ int main(int argc, char *argv[]) {
 	int colIndex1 = findColIndex(firstPath, colName1);
 	int colIndex2 = findColIndex(secondPath, colName2);
 
-	double hashTime = 0;
-	double loopTime = 0;
-
+	// double hashTime = 0;
+	// double loopTime = 0;
 	
-	for (int i = 0; i < 10; i++) {
-		double temptime = join(firstFile, secondFile, colIndex1, colIndex2, "NESTED_LOOP", output);
-		loopTime += temptime;
-		cout << temptime << endl;
-	}
-	for (int i = 0; i < 10; i++) {
-		double temptime = join(firstFile, secondFile, colIndex1, colIndex2, "HASH", output);
-		hashTime += temptime;
-		cout << temptime << endl;
-	}
-	double hashavgtime = hashTime / 10.0;
-	double loopavgtime = loopTime / 10.0;
+	// for (int i = 0; i < 10; i++) {
+	// 	double temptime = join(firstFile, secondFile, colIndex1, colIndex2, "NESTED_LOOP", output);
+	// 	loopTime += temptime;
+	// 	cout << temptime << endl;
+	// }
+	// for (int i = 0; i < 10; i++) {
+	// 	double temptime = join(firstFile, secondFile, colIndex1, colIndex2, "HASH", output);
+	// 	hashTime += temptime;
+	// 	cout << temptime << endl;
+	// }
+	// double hashavgtime = hashTime / 10.0;
+	// double loopavgtime = loopTime / 10.0;
 
 
-	cout << hashavgtime << endl;
-	cout << loopavgtime << endl;
+	// cout << hashavgtime << endl;
+	// cout << loopavgtime << endl;
 	
+	double time = join(firstFile, secondFile, colIndex1, colIndex2, mode, output);
 }
