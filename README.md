@@ -1,8 +1,8 @@
 # CS411_ExtraCredit
 
 ## Run for sample files
-- Compile program: g++ -std=c++11 project.cpp -o project
-- Run: ```console ./project nation.csv REGIONKEY region.csv REGIONKEY HASH output.csv ``` OR ```console ./project nation.csv REGIONKEY region.csv REGIONKEY NESTED_LOOP output.csv ```
+- Compile program: ```console g++ -std=c++11 project.cpp -o project```
+- Run: ```console ./project nation.csv REGIONKEY region.csv REGIONKEY HASH output.csv``` OR ```console ./project nation.csv REGIONKEY region.csv REGIONKEY NESTED_LOOP output.csv```
 
 ## Benchmark result
 - Note: inorder to reduce the time, I've reduce the size of the dataset and only take 1/200 of the data
